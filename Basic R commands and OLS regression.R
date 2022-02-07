@@ -55,7 +55,6 @@
 # subset of a matrix. First 4 elements of row 1
   M[1:4,1]
 
-
   E <- matrix(c(1,2,3,4,5,6,7,8,9,10,11,12), nrow = 3, ncol = 4)
   E
   E[1,2]						#E[row num, col num]. Show element of row 1, col 2
