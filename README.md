@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @hannahhoa
 - 👀 I’m interested in programming and data analysis
-- 🌱 I’m currently learning Python
+- 🌱 I’m currently a PhD student of Economics at Deakin University (Australia)
 - 💞️ I’m looking to collaborate on applied economic research
 - 📫 How to reach me: thihoanguyen1993@gmail.com
 
