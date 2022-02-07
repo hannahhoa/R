@@ -88,9 +88,35 @@
   plot(mydat$x,mydat$y)	
 
   # Compare fitness of 3 models
-  lines(mod3, lwd= 2, col="green")	
   abline(coef(mod1), col="red", lwd=2)
   lines(mydat$x[order(mydat$x)], fit[order(mydat$x)], col="blue", lwd=2 )
+  lines(mod3, lwd= 2, col="green")	
+  
+  
+## Model 4: Lowess model but less smooth local regression (f=0.1) 
+  mod4 <- lowess(x, y, f=0.1)		
  
+  
+  
+##### 3 Model fit #####
+# To find model that fit the best, we compare RSS. 
+# But first, let's have a quick look on fitted curves
+  plot(mydat$x,mydat$y)					
+  
+  abline(coef(mod1), lwd = 2)
+  fit <- fitted(mod2)
+  lines(mydat$x[order(mydat$x)], fit[order(mydat$x)], col="blue", lwd=2 )
+  lines(mod3, lwd= 2, col="green")	
+  lines(mod4, lwd= 2, col="red")	
+  
+# Compute RSS
+  sum(residuals(mod1)^2)		## RSS linear model
+  sum(residuals(mod2)^2) 		## RSS log model
+  y.o <- y[order(x)]			
+  sum((y.o - mod3$y)^2) 		## RSS local reg
+  sum((y.o - mod4$y)^2) 		## RSS 2nd local reg	
+
+# Since model 4 has lowest RSS, it's the best fitting model
+  
   rm(list=ls()) 
-##### END ##### 
+##### END #####
