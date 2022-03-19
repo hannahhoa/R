@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @hannahhoa
+- 👋 Hi, I’m Hannah (Hoa)
 - 👀 I’m interested in programming and data analysis
 - 🌱 I’m currently a PhD student of Economics at Deakin University (Australia)
 - 💞️ I’m looking to collaborate on applied economic research
