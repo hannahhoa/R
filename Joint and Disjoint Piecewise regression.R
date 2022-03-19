@@ -1,3 +1,8 @@
+            #####################################
+            #   Author: Thi Hoa (Hannah) Nguyen #
+            #   Topic 2 Non-linear Regression   #
+            #####################################
+
 rm(list=ls())
 
 # Download file "ceosal2.dta" to your working directory
