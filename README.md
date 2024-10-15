@@ -1,6 +1,6 @@
-- 👋 Hi, I’m Hannah (Hoa)
+- 👋 Hi, I’m Hannah (Thi Hoa)
 - 👀 I’m interested in programming and data analysis
-- 🌱 I’m currently a PhD student of Economics at Deakin University (Australia)
+- 🌱 I’m PhD in Economics, based in Australia.
 - 💞️ I’m looking to collaborate on applied economic research
 - 📫 How to reach me: https://www.linkedin.com/in/thihoanguyen/
 
