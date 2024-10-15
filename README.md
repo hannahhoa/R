@@ -1,8 +1,8 @@
 - 👋 Hi, I’m Hannah (Thi Hoa)
+- 🌱 a PhD in Economics, based in Australia
 - 👀 I’m interested in programming and data analysis
-- 🌱 I’m PhD in Economics, based in Australia.
-- 💞️ I’m looking to collaborate on applied economic research
-- 📫 How to reach me: https://www.linkedin.com/in/thihoanguyen/
+- 💞️ looking to collaborate on applied economic and program evaluation projects
+- 📫 How to reach me: [https://www.linkedin.com/in/thihoanguyen/](https://www.linkedin.com/in/hannahhoa/)
 
 <!---
 hannahhoa/hannahhoa is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
