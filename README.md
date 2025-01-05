@@ -1,4 +1,4 @@
-- 👋 Hi, I’m Hannah (Thi Hoa)
+- 👋 Hi, I’m Hannah
 - 🌱 a PhD in Economics, based in Australia
 - 👀 I’m interested in programming and data analysis
 - 💞️ looking to collaborate on applied economic and program evaluation projects
