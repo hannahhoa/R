@@ -33,7 +33,7 @@ lag <- function(X)
   plot(data$Pcarb, type="l")
   
   plot(data$Pukel, type="l", ylim=c(0,280))
-  lines(data$Pukgas, type="l", col="blue")  #price of electricity and price of gas are highly correlated, even by eyes ^^
+  lines(data$Pukgas, type="l", col="blue")  #price of electricity and price of gas are highly correlated
   lines(data$Pcarb, type="l", col="red")
 }
 
@@ -53,7 +53,7 @@ lag <- function(X)
 
 ### 4. ESTIMATE VAR to understand the number of lags in the cointegration analysis ####
 {
-  y <- cbind(log(data$Pukel), log(data$Pukgas), log(data$Pcarb)) #Nr of endogenous variable: k=3
+  y <- cbind(log(data$Pukel), log(data$Pukgas), log(data$Pcarb)) #Number of endogenous variable: k=3
   colnames(y) <- c("elect", "gas", "carbon")
   head(y)
   
@@ -62,18 +62,14 @@ lag <- function(X)
   head(x)
   
   m1 <- VAR(y, type = c("both"), lag.max = 10, ic = c("AIC")) 
-  # y: khai bao rang bien endogenous, 
-  #ic = c("AIC"): select the number of lags using AIC criteria
-  #lag.max = 10: maximum number of lags is 10
-  #type = c("both")?
   summary(m1)
-  #R2 is very high but we can't trust it because of non-stationary series.
+  #R2 is very high but not reliable because of non-stationary series.
   #See the correlation marix of residuals: corr(elect, gas)=0.73 => very high.
   
   serial.test(m1, type="BG", lags.bg = 5)  
   # test the correlation between the errors in the model to be sure
   serial.test(m1, type="BG", lags.bg = 10) 
-  # p-val=0.04=> reject the null hypo of non-autocorrelation => there is autocorrelation between the errors
+  # p-val=0.04=> reject the null hypo of non-autocorrelation => there is autocorrelation in the errors
   
 }
 
@@ -90,10 +86,9 @@ lag <- function(X)
   summary(m1)		#season =5: dummy for every 5 days
   # type = c("both"): to include both the constant (intercept) and the trend
   
-  plot(m1)      #?? what does it graph tell us?
+  plot(m1)  
   
-  serial.test(m1, type="BG", lags.bg = 5)		## passed
-  #?? Error in cbind(ylagged, resids.l) : number of rows of matrices must match (see arg 2)
+  serial.test(m1, type="BG", lags.bg = 5)
 }
 
 ### 5. Check for cointegration ####
@@ -116,10 +111,10 @@ lag <- function(X)
 {
   vecm <- cajorls(m2, r = 1)  #r = 1: what we found from step 4
   # electricity price is normalized to 1.
-  # no exclusion restriction is needed cuz r=1
+  # no exclusion restriction is needed because r=1
   # What happen: In the short run
   summary(vecm$rlm)
-  #We get 3 models inside. We can trust R-squared in those models cuz the variables are stationary.
+  #We get 3 models. We can trust R-squared in those models because the variables are stationary.
   #Model 1: elect.d ~ ect1 + Df + Dc + Dc1 + Dc2 + sd1 + sd2 + sd3 + sd4 + elect.dl1 + gas.dl1 + carbon.dl1 - 1
   #         ect1 = -0.26*** => electricity price is adjusted towards equilibrium by 26% in the first period
   #Model 2: gas.d ~ ect1 + Df + Dc + Dc1 + Dc2 + sd1 + sd2 + sd3 + sd4 + elect.dl1 + gas.dl1 + carbon.dl1 - 1         
@@ -130,16 +125,14 @@ lag <- function(X)
   
   # What happen: In the long run
   vecm$beta
-  #result: BE CAREFUL WITH THE SIGNS OF THE COEFFICIENT!
   #ect1
   #elect.l1   1.0000000
   #gas.l1    -0.6564023 =>In the long run, an increase by 1$ in gas price leads to 0.65$ INCREASE in electricity price
   #carbon.l1 -0.3370133 =>In the long run, an increase by 1$ in carbon price leads to 0.34$ INCREASE in electricity price
   #constant  -0.6727322
   # WHICH SHOWS: alfa[P_elect(t) - 0.67 - 0.65P_gas(t-1) - 0.34P_car(t-1)]
-  # The relationship to be intepreted in the long run is inside []: P_elect(t) = 0.67 + 0.65P_gas(t-1) + 0.34P_car(t-1)
-  # This does not give the significance level for betas. The procedure of finding the significance level for betas is complicated!
-  # Prof said to skip this, he ran and found that they are significant.
+  # The relationship to be interpreted in the long run is inside []: P_elect(t) = 0.67 + 0.65P_gas(t-1) + 0.34P_car(t-1)
+  # This does not give the significance level for betas
   
   resids <- resid(vecm$rlm)
   cor(resids)
@@ -152,5 +145,5 @@ lag <- function(X)
   
   plot(irf(mv, impulse="gas", n.ahead = 20))
   #which shows the cumulative impact of the gas price which is proved to be 
-  # exogeous in the long run not really understand this part
+  # exogeous in the long run
 }
