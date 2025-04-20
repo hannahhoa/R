@@ -1,7 +1,7 @@
 - 👋 Hi, I’m Hannah
 - 🌱 a PhD in Economics, based in Australia
 - 👀 I’m interested in programming and data analysis
-- 💞️ looking to collaborate on applied economic and program evaluation projects
+- 💞️ looking to collaborate on applied economic projects
 - 📫 How to reach me: [https://www.linkedin.com/in/thihoanguyen/](https://www.linkedin.com/in/hannahhoa/)
 
 <!---
